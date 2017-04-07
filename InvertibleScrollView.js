@@ -4,6 +4,7 @@ import React, {
   PropTypes,
 } from 'react';
 import {
+  Platform,
   ScrollView,
   StyleSheet,
   View,
@@ -46,7 +47,7 @@ let InvertibleScrollView = React.createClass({
       ...props,
     } = this.props;
 
-    if (inverted) {
+    if (inverted && Platform.OS !== 'android') {
       if (this.props.horizontal) {
         props.style = [styles.horizontallyInverted, props.style];
         props.children = this._renderInvertedChildren(props.children, styles.horizontallyInverted);
