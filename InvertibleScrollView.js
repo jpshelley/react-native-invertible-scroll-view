@@ -47,13 +47,13 @@ let InvertibleScrollView = React.createClass({
       ...props,
     } = this.props;
 
-    if (inverted && Platform.OS !== 'android') {
+    if (inverted) {
       if (this.props.horizontal) {
         props.style = [styles.horizontallyInverted, props.style];
-        props.children = this._renderInvertedChildren(props.children, styles.horizontallyInverted);
+        (Platform.OS !== 'android') && props.children = this._renderInvertedChildren(props.children, styles.horizontallyInverted);
       } else {
         props.style = [styles.verticallyInverted, props.style];
-        props.children = this._renderInvertedChildren(props.children, styles.verticallyInverted);
+        (Platform.OS !== 'android') && props.children = this._renderInvertedChildren(props.children, styles.verticallyInverted);
       }
     }
 
